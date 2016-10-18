@@ -1,10 +1,10 @@
 INSERT INTO categories (name, parent_id) VALUES ('Data Types', NULL);
-INSERT INTO categories (name, parent_id) VALUES ('Numeric', (SELECT id FROM categories WHERE name = 'Data Types'));
-INSERT INTO categories (name, parent_id) VALUES ('Integers', (SELECT id FROM categories WHERE name = 'Numeric'));
-INSERT INTO categories (name, parent_id) VALUES ('Floats', (SELECT id FROM categories WHERE name = 'Numeric'));
-INSERT INTO categories (name, parent_id) VALUES ('Complex Numbers', (SELECT id FROM categories WHERE name = 'Numeric'));
-INSERT INTO categories (name, parent_id) VALUES ('Geometric', (SELECT id FROM categories WHERE name = 'Data Types'));
-INSERT INTO categories (name, parent_id) VALUES ('Point', (SELECT id FROM categories WHERE name = 'Geometric'));
-INSERT INTO categories (name, parent_id) VALUES ('Polygon', (SELECT id FROM categories WHERE name = 'Geometric'));
+INSERT INTO categories (name, parent_id) VALUES ('Numerics', (SELECT id FROM categories WHERE name = 'Data Types'));
+INSERT INTO categories (name, parent_id) VALUES ('Integers', (SELECT id FROM categories WHERE name = 'Numerics'));
+INSERT INTO categories (name, parent_id) VALUES ('Floats', (SELECT id FROM categories WHERE name = 'Numerics'));
+INSERT INTO categories (name, parent_id) VALUES ('Complex Numbers', (SELECT id FROM categories WHERE name = 'Numerics'));
+INSERT INTO categories (name, parent_id) VALUES ('Geometrics', (SELECT id FROM categories WHERE name = 'Data Types'));
+INSERT INTO categories (name, parent_id) VALUES ('Points', (SELECT id FROM categories WHERE name = 'Geometrics'));
+INSERT INTO categories (name, parent_id) VALUES ('Polygons', (SELECT id FROM categories WHERE name = 'Geometrics'));
 
-SELECT update_positions((SELECT id FROM categories WHERE parent_id IS NULL), 0);
+SELECT walk_tree((SELECT id FROM categories WHERE parent_id IS NULL), 1);

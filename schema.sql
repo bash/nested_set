@@ -6,28 +6,24 @@ CREATE TABLE IF NOT EXISTS categories (
   "right" INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE OR REPLACE FUNCTION update_positions(id INTEGER, start INTEGER)
+CREATE OR REPLACE FUNCTION walk_tree(id INTEGER, number INTEGER)
 RETURNS INTEGER AS $$
-DECLARE child_count INTEGER;
 DECLARE row categories%rowtype;
-DECLARE right_value INTEGER;
-DECLARE last_right INTEGER;
+DECLARE number INTEGER;
+DECLARE right_number INTEGER;
 BEGIN
-  WITH RECURSIVE children AS (
-    SELECT categories.id, categories.parent_id FROM categories WHERE parent_id = $1
-    UNION SELECT categories.id, categories.parent_id FROM categories JOIN children ON categories.parent_id = children.id
-  ) SELECT count(children.id) FROM children INTO child_count;
-
-  SELECT (($2 + (child_count + 1) * 2)) INTO right_value;
-  SELECT (start + 1) INTO last_right;
-
-  UPDATE categories SET "left" = ($2 + 1), "right" = right_value WHERE categories.id = $1;
+  SELECT $2 INTO number;
+  SELECT number INTO right_number;
 
   FOR row IN SELECT * FROM categories WHERE parent_id = $1
   LOOP
-    SELECT update_positions(row.id, last_right) INTO last_right;
+    SELECT walk_tree(row.id, (right_number + 1)) INTO right_number;
   END LOOP;
 
-  RETURN right_value;
+  SELECT (right_number + 1) INTO right_number;
+
+  UPDATE categories SET "left" = number, "right" = right_number WHERE categories.id = $1;
+
+  RETURN right_number;
 END
 $$ LANGUAGE 'plpgsql';
