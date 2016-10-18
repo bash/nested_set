@@ -6,3 +6,5 @@ INSERT INTO categories (name, parent_id) VALUES ('Complex Numbers', (SELECT id F
 INSERT INTO categories (name, parent_id) VALUES ('Geometric', (SELECT id FROM categories WHERE name = 'Data Types'));
 INSERT INTO categories (name, parent_id) VALUES ('Point', (SELECT id FROM categories WHERE name = 'Geometric'));
 INSERT INTO categories (name, parent_id) VALUES ('Polygon', (SELECT id FROM categories WHERE name = 'Geometric'));
+
+SELECT update_positions((SELECT id FROM categories WHERE parent_id IS NULL), 0);
