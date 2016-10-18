@@ -1,4 +1,4 @@
-# nested_set
+# nested_sets
 
 This repository containes an example for [Nested Sets](https://en.wikipedia.org/wiki/Nested_set_model) written in SQL.
 
