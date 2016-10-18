@@ -14,10 +14,9 @@ DECLARE right_value INTEGER;
 DECLARE last_right INTEGER;
 BEGIN
   WITH RECURSIVE children AS (
-  SELECT categories.id, categories.parent_id FROM categories WHERE parent_id = $1
-  UNION
-    SELECT categories.id, categories.parent_id FROM categories JOIN children ON categories.parent_id = children.id
-) SELECT count(children.id) FROM children INTO child_count;
+    SELECT categories.id, categories.parent_id FROM categories WHERE parent_id = $1
+    UNION SELECT categories.id, categories.parent_id FROM categories JOIN children ON categories.parent_id = children.id
+  ) SELECT count(children.id) FROM children INTO child_count;
 
   SELECT (($2 + (child_count + 1) * 2)) INTO right_value;
   SELECT (start + 1) INTO last_right;
@@ -26,9 +25,7 @@ BEGIN
 
   FOR row IN SELECT * FROM categories WHERE parent_id = $1
   LOOP
-
-    SELECT migrate(row.id, last_right) INTO last_right;
-
+    SELECT update_positions(row.id, last_right) INTO last_right;
   END LOOP;
 
   RETURN right_value;
