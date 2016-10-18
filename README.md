@@ -6,13 +6,13 @@ This repository containes an example for [Nested Sets](https://en.wikipedia.org/
 
 ```
 |-- Data Types
-|   |-- Numeric
+|   |-- Numerics
 |   |   |-- Integers
 |   |   |-- Floats
 |   |   `-- Complex Numbers
-|   |-- Geometric
-|   |   |-- Point
-|   |   `-- Polygon
+|   |-- Geometrics
+|   |   |-- Points
+|   |   `-- Polygons
 ```
 
 ### Example Output
@@ -21,13 +21,13 @@ The numbers in the brackets are the associated left and right values.
 
 ```
 |-- Data Types (1, 16)
-|   |-- Numeric (2, 9)
+|   |-- Numerics (2, 9)
 |   |   |-- Integers (3, 4)
 |   |   |-- Floats (5, 6)
 |   |   `-- Complex Numbers (7, 8)
-|   |-- Geometric (10, 15)
-|   |   |-- Point (11, 12)
-|   |   `-- Polygon (13, 14)
+|   |-- Geometrics (10, 15)
+|   |   |-- Points (11, 12)
+|   |   `-- Polygons (13, 14)
 ```
 
 ### "Visual" Representation
@@ -38,14 +38,14 @@ The numbers in the brackets are the associated left and right values.
  |-----------------------------------------------------------------------------------------|
  |                                                                                         |
  |                                                                                         |
- |                      Numeric                                   Geometric                |
+ |                     Numerics                                   Geometrics               |
  |                         |                                          |                    |
  |     |-----------------------------------------|     |-----------------------------|     |
  |     |                                         |     |                             |     |
  |     |                                         |     |                             |     |
  |     |                        Complex Numbers  |     |                             |     |
  |     |                                |        |     |                             |     |
- |     |     Integers     Floats        |        |     |      Point      Polygon     |     |
+ |     |     Integers     Floats        |        |     |      Points     Polygons    |     |
  |     |        |           |           |        |     |        |           |        |     |
  |     |     |-----|     |-----|     |-----|     |     |     |-----|     |-----|     |     |
  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
