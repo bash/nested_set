@@ -1,6 +1,10 @@
 # nested_sets
 
-This repository containes an example for [Nested Sets](https://en.wikipedia.org/wiki/Nested_set_model) written in SQL.
+This repository containes an example for [Nested Sets](https://en.wikipedia.org/wiki/Nested_set_model) written in SQL.  
+
+**tl;dr:** Don't use nested sets.
+
+Presentation (in German): [Google Slides](https://docs.google.com/presentation/d/1o7480mmtPCAAk8tqyOjBGjVx0_ccFGgkmvAgcGcRboo/edit?usp=sharing)
 
 ### Example Input
 
